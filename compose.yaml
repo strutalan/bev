@@ -1,0 +1,52 @@
+services:
+  wp:
+    build: ./nginx
+    networks:
+      - wp
+    volumes:
+      - wordpress_files:/usr/share/nginx/html
+      - ./wp:/usr/share/nginx/html/wp-content
+      - ./ssl:/etc/ssl/certs:ro
+    environment:
+      - SERVER_NAME=${SERVER_NAME}
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php
+
+  php:
+    networks:
+      - wp
+    build: ./php8.2
+    volumes:
+      - wordpress_files:/var/www/html
+      - ./wp:/var/www/html/wp-content
+
+  db:
+    networks:
+      - wp
+    image: mariadb
+    restart: always
+    volumes:
+      - wpdb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MARIADB_DATABASE: ${WP_DB}
+      MARIADB_USER: ${WP_DB_USER}
+      MARIADB_PASSWORD: ${WP_DB_USER_PASS}
+
+  adminer:
+    networks:
+      - wp
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+networks:
+  wp:
+
+volumes:
+  wpdb:
+  wordpress_files:

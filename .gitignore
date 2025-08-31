@@ -1,0 +1,58 @@
+# Docker
+.env
+.env.local
+.env.production
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Node modules (if using build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build files
+dist/
+build/
+*.min.css
+*.min.js
+
+# Composer
+vendor/
+composer.lock
+
+# Temporary files
+tmp/
+temp/
+.tmp
+.cache
+
+# Backup files
+*.bak
+*~
+
+# SSL certificates
+ssl/
+
+# AI Assistant files
+CLAUDE.md
+AGENTS.md
+CURSOR_RULES.md
+.cursorrules
+.windsurf/
+.aider*
