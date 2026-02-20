@@ -7,7 +7,7 @@ services:
       - ./wp:/usr/share/nginx/html
       - ./ssl:/etc/ssl/certs:ro
     environment:
-      - SERVER_NAME=${SERVER_NAME}
+      - SERVER_NAME=${HOSTNAME}.local
     ports:
       - "80:80"
       - "443:443"
