@@ -4,8 +4,7 @@ services:
     networks:
       - wp
     volumes:
-      - wordpress_files:/usr/share/nginx/html
-      - ./wp:/usr/share/nginx/html/wp-content
+      - ./wp:/usr/share/nginx/html
       - ./ssl:/etc/ssl/certs:ro
     environment:
       - SERVER_NAME=${SERVER_NAME}
@@ -20,8 +19,7 @@ services:
       - wp
     build: ./php8.2
     volumes:
-      - wordpress_files:/var/www/html
-      - ./wp:/var/www/html/wp-content
+      - ./wp:/var/www/html
 
   db:
     networks:
@@ -49,4 +47,3 @@ networks:
 
 volumes:
   wpdb:
-  wordpress_files:
